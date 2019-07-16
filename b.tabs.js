@@ -161,7 +161,7 @@
 		var c = constants, $tabs = this.$container, openTabs = this.openTabs;
 		var thisTab = $('#' + id);
 		//在移除标签页之前，先把iframe移除，解决在IE下，窗口上的输入控件获得不了焦点的问题
-		if($('iframe',$(thisTab)).size() > 0) $('iframe',$(thisTab)).remove();
+		if($('iframe',$(thisTab)).length > 0) $('iframe',$(thisTab)).remove();
 		//移除内容区
 		$(thisTab).remove();
 		var a = $('ul.nav-tabs a[href="#'+id+'"]',$tabs);
@@ -181,7 +181,7 @@
 			if(index != -1) openTabs.splice(index,1);
 		}
 		//激活被关闭Tab邻的Tab，若没有则不处理
-		if(prevLi.size() > 0 ) $('a',$(prevLi)).tab('show');
+		if(prevLi.length > 0 ) $('a',$(prevLi)).tab('show');
 	};
 	
 	/**
@@ -213,7 +213,7 @@
 	 */
 	function bTabsClose(id){
 		return this.each(function(){
-			if(!id || !title || !url) return;
+			if(!id) return;
 			var $this = $(this),data = $this.data('bTabs');
 			if(data) data.closeTab(id);
 		});
